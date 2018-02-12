@@ -34,7 +34,7 @@
 	display: grid;
 	grid-gap: 25px;
 	max-width: 1080px;
-	margin: 0 auto;
+	margin: 0 auto 50px;
 	@media (min-width: 560px) and (max-width: 767px) {
 		grid-template-columns: 1fr 1fr;
 	}

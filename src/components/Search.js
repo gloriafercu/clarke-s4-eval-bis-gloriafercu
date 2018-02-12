@@ -6,9 +6,9 @@ class Search extends React.Component {
 			<div className="search__containers">
 				<input type="text" className="input__search" name="input__search" placeholder="Search repositories"/>
 				<select className="input__select">
-					<option >HTML</option>
-					<option>CSS</option>
-					<option>JS</option>
+					<option value="HTML">HTML</option>
+					<option value="CSS">CSS</option>
+					<option value="JS" >JS</option>
 				</select>
 			</div>
 		);

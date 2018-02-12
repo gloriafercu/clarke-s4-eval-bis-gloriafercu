@@ -19,18 +19,20 @@ class App extends React.Component {
 			this.setState({
 				repositories: json
 			});
-			// const listRespositories = json;
-			// console.log(json.map (
-			// 	list => list.name
-			// ));
 		});
 	}
 
+	// handleOnchangeSelect(event) {
+	// 	const list
+  //
+  //
+	// }
+
 	printRepositories() {
- 		const listRespositories = this.state.repositories;
+ 		const listRepos = this.state.repositories;
 		return (
 			<ul className="list__repos">
-				{ listRespositories.map((list, index)=>
+				{ listRepos.map((list, index)=>
 					<li className="repo__card" key = {index}>
 						<RepoCard
 							name = {list.name}
