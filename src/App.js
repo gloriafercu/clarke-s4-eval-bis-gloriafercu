@@ -7,8 +7,10 @@ import '././scss/main.css';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.handleOnchange = this.handleOnchange.bind(this);
 		this.state = {
-			repositories: []
+			repositories: [],
+			select: ''
 		};
 	}
 
@@ -22,23 +24,32 @@ class App extends React.Component {
 		});
 	}
 
-	// handleOnchangeSelect(event) {
-	// 	const list
-  //
-  //
-	// }
+	handleOnchange(event) {
+		const valueSelect = event.target.value.toLowerCase();
+		console.log(valueSelect);
+		this.setState({
+			select: valueSelect
+		});
+	}
 
 	printRepositories() {
- 		const listRepos = this.state.repositories;
+ 		const listRepos = this.state.repositories.filter(item =>
+	       item.language.toLowerCase().includes(this.state.select)
+	     );
+
+
+
+
+
 		return (
 			<ul className="list__repos">
 				{ listRepos.map((list, index)=>
-					<li className="repo__card" key = {index}>
-						<RepoCard
-							name = {list.name}
-							url = {list.html_url}
-							description = {list.description}
-							lang = {list.language}
+						<li className="repo__card" key = {index}>
+							<RepoCard
+								name = {list.name}
+								url = {list.html_url}
+								description = {list.description}
+								lang = {list.language}
 						/>
 					</li>)
 				}
@@ -53,7 +64,7 @@ class App extends React.Component {
 					<h1 className="header__title">Repos at Adalab in GitHub</h1>
 				</header>
 				<main className="wrapper">
-					<Search />
+					<Search changeSelect={this.handleOnchange}/>
 					{ this.printRepositories() }
 				</main>
 			</div>
