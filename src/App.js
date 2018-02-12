@@ -47,8 +47,8 @@ class App extends React.Component {
  render() {
 		return (
 			<div className="App">
-				<header className="header__title">
-					<h1>Repos at Adalab in GitHub</h1>
+				<header className="header__container">
+					<h1 className="header__title">Repos at Adalab in GitHub</h1>
 				</header>
 				<main className="wrapper">
 					<Search />
