@@ -56,7 +56,7 @@ class App extends React.Component {
 							<RepoCard
 								name = {list.name}
 								url = {list.html_url}
-								description = {list.description}
+								description = {list.description? list.description : '**Not description Repo**'}
 								lang = {list.language}
 							/>
 						</li>)
