@@ -11,6 +11,7 @@ class Search extends React.Component {
 					<option value="CSS">CSS</option>
 					<option value="JavaScript">JavaScript</option>
 				</select>
+
 			</div>
 		);
 	}

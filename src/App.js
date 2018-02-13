@@ -37,7 +37,6 @@ class App extends React.Component {
 
 	handleOnchangeInput(event) {
 		const valueInput= event.target.value.toLowerCase();
-		console.log(valueInput);
 		this.setState({
 			input: valueInput
 		});
@@ -49,18 +48,21 @@ class App extends React.Component {
 		const listReposRefilter = listRepos.filter(item => item.name.toLowerCase().includes(this.state.input));
 
 		return (
-			<ul className="list__repos">
-				{ listReposRefilter.map((list, index)=>
-					<li className="repo__card" key = {index}>
-						<RepoCard
-							name = {list.name}
-							url = {list.html_url}
-							description = {list.description}
-							lang = {list.language}
-						/>
-					</li>)
-				}
-			</ul>
+			<div >
+				<p className="counter">{ listReposRefilter.length } repositories</p>
+				<ul className="list__repos">
+					{ listReposRefilter.map((list, index)=>
+						<li className="repo__card" key = {index}>
+							<RepoCard
+								name = {list.name}
+								url = {list.html_url}
+								description = {list.description}
+								lang = {list.language}
+							/>
+						</li>)
+					}
+				</ul>
+			</div>
 		);
 	}
 
@@ -73,6 +75,7 @@ class App extends React.Component {
 				<main className="wrapper">
 					<Search changeInput={this.handleOnchangeInput} changeSelect={this.handleOnchangeSelect}/>
 					{ this.printRepositories() }
+
 				</main>
 			</div>
     );

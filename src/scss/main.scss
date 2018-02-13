@@ -29,6 +29,13 @@
 	box-sizing: border-box;
 	background-color: #F5FCFD;
 }
+.counter {
+	font-size: 20px;
+	color: #F00699;
+	text-align: center;
+	margin: 30px;
+	font-weight: bold;
+}
 .list__repos {
 	list-style-type: none;
 	display: grid;
