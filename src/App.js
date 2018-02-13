@@ -28,6 +28,8 @@ class App extends React.Component {
 
 	handleOnchangeSelect(event) {
 		const valueSelect = event.target.value.toLowerCase();
+
+
 		this.setState({
 			select: valueSelect
 		});
@@ -49,12 +51,12 @@ class App extends React.Component {
 		return (
 			<ul className="list__repos">
 				{ listReposRefilter.map((list, index)=>
-						<li className="repo__card" key = {index}>
-							<RepoCard
-								name = {list.name}
-								url = {list.html_url}
-								description = {list.description}
-								lang = {list.language}
+					<li className="repo__card" key = {index}>
+						<RepoCard
+							name = {list.name}
+							url = {list.html_url}
+							description = {list.description}
+							lang = {list.language}
 						/>
 					</li>)
 				}
@@ -69,7 +71,7 @@ class App extends React.Component {
 					<h1 className="header__title">Repos at Adalab in GitHub</h1>
 				</header>
 				<main className="wrapper">
-					<Search changeSelect={this.handleOnchangeSelect} changeInput={this.handleOnchangeInput}/>
+					<Search changeInput={this.handleOnchangeInput} changeSelect={this.handleOnchangeSelect}/>
 					{ this.printRepositories() }
 				</main>
 			</div>
