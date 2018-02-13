@@ -10,7 +10,8 @@ class App extends React.Component {
 		this.handleOnchange = this.handleOnchange.bind(this);
 		this.state = {
 			repositories: [],
-			select: ''
+			select: '',
+			input: ''
 		};
 	}
 
@@ -26,16 +27,19 @@ class App extends React.Component {
 
 	handleOnchange(event) {
 		const valueSelect = event.target.value.toLowerCase();
-		console.log(valueSelect);
+		const valueInput= event.target.value.toLowerCase();
+		console.log(valueInput);
 		this.setState({
-			select: valueSelect
+			select: valueSelect,
+			input: valueInput
 		});
 	}
 
 	printRepositories() {
  		const listRepos = this.state.repositories.filter(item =>
-	       item.language.toLowerCase().includes(this.state.select)
-	     );
+			item.language.toLowerCase().includes(this.state.select));
+		const listReposRefilter = listRepos.filter(el => el.name.toLowerCase().includes(this.state.select));
+
 
 
 
@@ -43,7 +47,7 @@ class App extends React.Component {
 
 		return (
 			<ul className="list__repos">
-				{ listRepos.map((list, index)=>
+				{ listReposRefilter.map((list, index)=>
 						<li className="repo__card" key = {index}>
 							<RepoCard
 								name = {list.name}
@@ -64,7 +68,7 @@ class App extends React.Component {
 					<h1 className="header__title">Repos at Adalab in GitHub</h1>
 				</header>
 				<main className="wrapper">
-					<Search changeSelect={this.handleOnchange}/>
+					<Search changeSelect={this.handleOnchange} changeInput={this.handleOnchange}/>
 					{ this.printRepositories() }
 				</main>
 			</div>
