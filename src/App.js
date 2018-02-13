@@ -7,7 +7,8 @@ import '././scss/main.css';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleOnchange = this.handleOnchange.bind(this);
+		this.handleOnchangeSelect = this.handleOnchangeSelect.bind(this);
+		this.handleOnchangeInput = this.handleOnchangeInput.bind(this);
 		this.state = {
 			repositories: [],
 			select: '',
@@ -25,12 +26,17 @@ class App extends React.Component {
 		});
 	}
 
-	handleOnchange(event) {
+	handleOnchangeSelect(event) {
 		const valueSelect = event.target.value.toLowerCase();
+		this.setState({
+			select: valueSelect
+		});
+	}
+
+	handleOnchangeInput(event) {
 		const valueInput= event.target.value.toLowerCase();
 		console.log(valueInput);
 		this.setState({
-			select: valueSelect,
 			input: valueInput
 		});
 	}
@@ -38,12 +44,7 @@ class App extends React.Component {
 	printRepositories() {
  		const listRepos = this.state.repositories.filter(item =>
 			item.language.toLowerCase().includes(this.state.select));
-		const listReposRefilter = listRepos.filter(el => el.name.toLowerCase().includes(this.state.select));
-
-
-
-
-
+		const listReposRefilter = listRepos.filter(item => item.name.toLowerCase().includes(this.state.input));
 
 		return (
 			<ul className="list__repos">
@@ -68,7 +69,7 @@ class App extends React.Component {
 					<h1 className="header__title">Repos at Adalab in GitHub</h1>
 				</header>
 				<main className="wrapper">
-					<Search changeSelect={this.handleOnchange} changeInput={this.handleOnchange}/>
+					<Search changeSelect={this.handleOnchangeSelect} changeInput={this.handleOnchangeInput}/>
 					{ this.printRepositories() }
 				</main>
 			</div>
