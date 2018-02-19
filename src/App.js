@@ -46,6 +46,7 @@ class App extends React.Component {
  		const listRepos = this.state.repositories.filter(item =>
 			item.language.toLowerCase().includes(this.state.select));
 		const listReposRefilter = listRepos.filter(item => item.name.toLowerCase().includes(this.state.input));
+		listReposRefilter.length;
 
 		return (
 			<div >
@@ -56,7 +57,7 @@ class App extends React.Component {
 							<RepoCard
 								name = {list.name}
 								url = {list.html_url}
-								description = {list.description? list.description : '**Not description repo**'}
+								description = {list.description? list.description : '**Not description**'}
 								lang = {list.language}
 							/>
 						</li>)
