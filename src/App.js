@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './components/Search';
-import RepoCard from './components/RepoCard';
+import Repolist from './components/Repolist';
 
 import '././scss/main.css';
 
@@ -46,23 +46,12 @@ class App extends React.Component {
  		const listRepos = this.state.repositories.filter(item =>
 			item.language.toLowerCase().includes(this.state.select));
 		const listReposRefilter = listRepos.filter(item => item.name.toLowerCase().includes(this.state.input));
-		listReposRefilter.length;
 
 		return (
 			<div >
 				<p className="counter">{ listReposRefilter.length } repositories</p>
-				<ul className="list__repos">
-					{ listReposRefilter.map((list, index)=>
-						<li className="repo__card" key = {index}>
-							<RepoCard
-								name = {list.name}
-								url = {list.html_url}
-								description = {list.description? list.description : '**Not description**'}
-								lang = {list.language}
-							/>
-						</li>)
-					}
-				</ul>
+				<Repolist repos={listReposRefilter}/>
+
 			</div>
 		);
 	}
